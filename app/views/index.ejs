@@ -1,65 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>HoneyBee Ticketing Service</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    .navbar {
-      background-color: #454545;
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    footer {
-      background-color: #454545;
-      padding: 25px;
-    }
-  </style>
-</head>
-<body>
-  <%- include('components/header.ejs') %> 
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      .navbar {
+        background-color: #454545;
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+      footer {
+        background-color: #454545;
+        padding: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('components/header.ejs') %>
 
+    <main><%- include('content/' + page +'.ejs') %></main>
 
-
-<div class="jumbotron">
-  <div class="container text-center">
-    <h2>Welcome to HoneyBee. Please login.</h2>      
-
-  </div>
-</div>
-<div class="col-sm-3"> </div>
-<div class="container-fluid bg-3 text-left">   
-  <div class="row">
-    <div class="col-sm-3">
-        <form>
-            <div class="form-group ">
-              <label for="userName1">User Name</label>
-              <input type="text" class="form-control" id="username" name="username" required value="" placeholder="Enter your username">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required value="" placeholder="Enter your password">
-            </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
-          </form>
-          <br>
-          <p>First time using HoneyBee? Please sign-up here.</p>
-    </div>
-    <div class="col-sm-3"> 
-      <p>Welcome to HoneyBee, the world’s best incident report
-        ticketing system. If you have an account, please
-        log in with your username and password. If you
-        are new to HoneyBee, please sign up for an account
-        with your company email address.</p>
-    </div>
-    <div class="col-sm-3"> </div>
-
-  </div>
-</div><br>
-<%- include('components/footer.ejs') %>
-</body>
-</html>
+    <%- include('components/footer.ejs') %>
+  </body>

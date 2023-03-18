@@ -10,10 +10,22 @@ Purpose:
 
 import { Router } from "express";
 
-import { homePage } from "../controllers/site.controller.server.js";
+import {
+  addTicketsPage,
+  contactPage,
+  dashboardPage,
+  homePage,
+  registerPage,
+  ticketsPage,
+} from "../controllers/site.controller.server.js";
 
 const router = Router();
 
 router.get("/", homePage);
+router.get("/add", addTicketsPage);
+router.get("/contact", contactPage);
+router.get("/dashboard", dashboardPage);
+router.get("/register", registerPage);
+router.get("/tickets", ticketsPage);
 
 export default router;
