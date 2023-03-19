@@ -14,6 +14,7 @@ import session from "express-session";
 import mongoose from "mongoose";
 import passport from "passport";
 import passportLocal from "passport-local";
+import flash from "connect-flash";
 
 // Set dirname variable
 import path, { dirname } from "path";
@@ -23,7 +24,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Import Routes
 // Populate once we have created the routes
-import router from "./routes/site.routes.server.js";
+import siterouter from "./routes/site.routes.server.js";
+import usersrouter from "./routes/users.routes.server.js";
 
 // Build the app server
 const app = express();
@@ -35,6 +37,10 @@ const app = express();
 // Populate once we have an authentication strategy
 
 // Set view engine to EJS
+import { Secret } from "../config/config.js";
+
+import User from "./models/users.js";
+
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
@@ -42,8 +48,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../public")));
 
+
+app.use(
+  session({
+    secret: Secret,
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Link routes to the webapp
 // Populate once we have routes
-app.use("/", router);
+app.use("/", siterouter);
+app.use("/", usersrouter);
 
 export default app;

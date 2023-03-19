@@ -36,12 +36,7 @@ export function dashboardPage(req, res, next) {
   });
 }
 
-export function registerPage(req, res, next) {
-  res.render("index", {
-    title: "Register",
-    page: "register",
-  });
-}
+
 
 export function ticketsPage(req, res, next) {
   res.render("index", {
