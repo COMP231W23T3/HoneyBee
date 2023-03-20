@@ -11,17 +11,13 @@ Purpose:
 import { Router } from "express";
 
 import {
-  addTicketsPage,
   contactPage,
   dashboardPage,
-  homePage,
   ticketsPage,
 } from "../controllers/site.controller.server.js";
 
 const router = Router();
 
-router.get("/", homePage);
-router.get("/add", addTicketsPage);
 router.get("/contact", contactPage);
 router.get("/dashboard", dashboardPage);
 router.get("/tickets", ticketsPage);

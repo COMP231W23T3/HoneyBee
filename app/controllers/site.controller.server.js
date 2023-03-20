@@ -8,20 +8,6 @@ Purpose:
 
 */
 
-export function homePage(req, res, next) {
-res.render("index", {
-    title: "HoneyBee Ticketing Service",
-    page: "home",
-  });
-}
-
-export function addTicketsPage(req, res, next) {
-  res.render("index", {
-    title: "Add Ticket",
-    page: "addticket",
-  });
-}
-
 export function contactPage(req, res, next) {
   res.render("index", {
     title: "Contact",
@@ -35,8 +21,6 @@ export function dashboardPage(req, res, next) {
     page: "dashboard",
   });
 }
-
-
 
 export function ticketsPage(req, res, next) {
   res.render("index", {

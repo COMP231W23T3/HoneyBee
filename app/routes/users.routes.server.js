@@ -1,8 +1,11 @@
 /*
+
 File name: users.routes.server.js
+
 Purpose: 
   All the routes related to the users controller
   This will manage handling around users
+
 */
 import { Router } from "express";
 
@@ -16,6 +19,7 @@ import {
 
 const router = Router();
 
+router.get("/", loginPage);
 router.get("/login", loginPage);
 router.post("/login", ProcessLogin);
 router.get("/register", registerPage);
