@@ -32,13 +32,21 @@ import incidentsrouter from "./routes/incidents.routes.server.js";
 const app = express();
 
 // connect to MongoDB
+import { Secret, MongoURI } from "../config/config.js";
+
+mongoose.connect(MongoURI);
+const db = mongoose.connection;
+
+db.on("open", () => console.log("Connected to Mongo"));
+db.on("error", () => console.log("Error conencting to mongo"));
+
 
 // Populate once we have established Mongo
 
 // Authentication
 // Populate once we have an authentication strategy
 //configurarion module
-import { Secret } from "../config/config.js";
+
 
 //import models 
 import User from "./models/users.js";
