@@ -1,0 +1,174 @@
+/* Primary Button */
+  .btn {
+    background-color: #7858FC;
+    border-radius: 4px;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .btn:hover {
+    background-color: #454545;
+    color: #ffffff
+  }
+
+/* Secondary Button */
+  .btn2 {
+    border-color: #454545;
+    border-radius: 4px;
+    color: #454545;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .btn2:hover {
+    background-color: #454545;
+    color: #ffffff
+  }
+
+/* Centered Paragraph */
+  .centerp {
+    margin: 0;
+    padding-top: 20%;
+    margin-left: 10%;
+    font-size: 16px;
+  }
+
+/*Footer/header/navbar Overrides */
+
+    .navbar {
+      background-color: #454545;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    body {
+    background-color: #dddddd;
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 150px;
+  }
+
+  .footer {
+    display: flex;
+    background-color: #454545;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: auto;
+    padding: 28px 0px;
+    gap: 28px;
+    z-index: 9999;
+    }
+
+  .footerp {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;    
+    padding-left: 16px;
+    color: #cccccc;    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+/* Main navigation links */
+  .links {
+    padding: 12px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;    
+    color: #ffffff;    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+    .links:hover { background-color: #7858FC;
+  }
+
+/*animated search bar */
+  .searchbar[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+  }
+
+/* Tickets List table Ticket Status column styles */
+
+  .TicketWaiting {
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #d9044a;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;    
+    color: #ffffff;    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .TicketOpen {
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #F2D255;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;    
+    color: #454545;    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+  .TicketResolved {
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #7AFC58;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;    
+    color: #454545;    
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+
+/* Vertical Nav Bar Style for logged in restricted pages */
+  .verticalnav {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 8px 16px;
+    gap: 28px;
+    width: 64px;
+    height: auto;
+    background-color: #454545;
+  }
+  
+/* Vertical Nav Bar Icon Hover Color */
+  .verticalnav:hover {
+    background-color: #F2D255;
+  }
