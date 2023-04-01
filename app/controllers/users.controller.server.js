@@ -13,45 +13,47 @@ import router from "../routes/site.routes.server.js";
 import { userName } from "../utils/utils.js";
 
 export function loginPage(req, res, next) {
-  if (!req.users)
+  if (!req.user) {
     res.render("index", {
       title: "Login",
       page: "login",
       messages: req.flash("error"),
       displayName: userName(req),
     });
-  return res.redirect("/home");
+  }
+  return res.redirect("/tickets");
 }
 export function registerPage(req, res, next) {
-  if (!req.users)
+  if (!req.user) {
     res.render("index", {
       title: "Register",
       page: "register",
       messages: req.flash("register error"),
       displayName: userName(req),
     });
+  }
 }
 // Process
 
 export function ProcessLogin(req, res, next) {
-  passport.authenticate("local", function (err, users, info) {
+  passport.authenticate("local", function (err, user, info) {
     if (err) {
       console.error(err);
       res.end(err);
     }
 
-    if (!users) {
+    if (!user) {
       req.flash("login", "Authentication Error");
       return res.redirect("/login");
     }
 
-    req.logIn(users, function (err) {
+    req.logIn(user, function (err) {
       if (err) {
         console.error(err);
         res.end(err);
       }
 
-      return res.redirect("/");
+      return res.redirect("/tickets");
     });
   })(req, res, next);
 }
@@ -75,9 +77,13 @@ export function ProcessRegister(req, res, next) {
       return res.redirect("/register");
     }
 
-    return passport.authenticate("local")(req, res, function () {
-      return res.redirect("/home");
-    });
+    console.log("account created");
+    return res.redirect("/");
+
+    // return passport.authenticate("local")(req, res, function () {
+    //   console.log("account created")
+    //   return res.redirect("/home");
+    // });
   });
 }
 

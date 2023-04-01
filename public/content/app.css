@@ -1,4 +1,5 @@
-.btn {
+/* Primary Button */
+  .btn {
     background-color: #7858FC;
     border-radius: 4px;
     color: white;
@@ -36,7 +37,6 @@
 /* Centered Paragraph */
   .centerp {
     margin: 0;
-
     padding-top: 20%;
     margin-left: 10%;
     font-size: 16px;
@@ -44,18 +44,18 @@
 
 /*Footer/header/navbar Overrides */
 
-.navbar {
-  background-color: #454545;
-  margin-bottom: 0;
-  border-radius: 0;
-}
+    .navbar {
+      background-color: #454545;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
 
-body {
-background-color: #dddddd;
-width: 100%;
-min-height: 100%;
-margin-bottom: 150px;
-}
+    body {
+    background-color: #dddddd;
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 150px;
+  }
 
   .footer {
     display: flex;
@@ -68,7 +68,6 @@ margin-bottom: 150px;
     gap: 28px;
     z-index: 9999;
     }
-
 
   .footerp {
     font-style: normal;
@@ -168,7 +167,7 @@ margin-bottom: 150px;
     height: auto;
     background-color: #454545;
   }
-
+  
 /* Vertical Nav Bar Icon Hover Color */
   .verticalnav:hover {
     background-color: #F2D255;

@@ -4,3 +4,14 @@ export function userName(req) {
   }
   return "";
 }
+
+
+// Authentication validation
+
+export function AuthGuard(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+
+  next();
+}
