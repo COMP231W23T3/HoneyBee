@@ -172,3 +172,82 @@
   .verticalnav:hover {
     background-color: #F2D255;
   }
+
+
+  /* | Add Ticket Header */
+
+.AddTicketHeader {
+  margin: 10px;
+  background-color: #454545;
+}
+
+.AddTicketHeader div i {
+  color: white;
+  font-size: 3rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.AddTicketContent .desc {
+  max-width: 50%;
+  min-width: 250px;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.AddTicketContent {
+  margin: 20px;
+}
+.AddTicketContent .form-title {
+  font-weight: bold;
+  margin: 15px 0;
+  max-width: 80%;
+  min-width: 300px;
+}
+.AddTicketContent .heading {
+  margin: 10px 0;
+  max-width: 90%;
+}
+.AddTicketContent .inputs input,
+.AddTicketContent .inputs textarea {
+  max-width: 50%;
+  min-width: 250px;
+  margin-bottom: 10px;
+}
+.AddTicketContent .buttons .row {
+  max-width: 50%;
+  min-width: 250px;
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+.AddTicketContent .buttons button {
+  padding: 8px;
+  width: 100%;
+}
+.AddTicketContent .buttons .cancel button {
+  width: calc(100% - 10px);
+}
+.AddTicketContent .buttons .submit {
+  float: right;
+}
+
+.AddTicketContent .buttons .row > div {
+  padding: 0;
+}
+
+.ContactUsContent {
+  padding: 3rem 1rem;
+  max-width: 45%;
+  text-align: center;
+  margin: auto;
+  min-width: 250px;
+}
+
+.ContactUsContent h2 {
+  margin-bottom: 20px;
+}
+
+.ContactUsContent input,
+.ContactUsContent textarea {
+  margin-bottom: 10px;
+}
