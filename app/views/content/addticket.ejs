@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="row AddTicketContent">
+    <div class="col-xs-12">
+      <h2 class="h2 form-title">Incident report form</h2>
+    </div>
+    <form class="form" method="POST">
+      <div class="col-xs-12 inputs">
+        <input 
+          type="text"
+          hidden
+          name="incidentID"
+          value="<%= incidents._id %>"
+          readonly/>
+
+        <label for="Customer Information">Responsibility</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="First and last name"
+          aria-label="fullname"
+          aria-describedby="basic-addon1"
+          value="<%= incidents.customerInformation %>"
+          name="customerInformation"
+          <% if (incidents.status == "CLOSED" || userType == "programmer" ) { %>
+            readonly
+          <% } %>
+        />
+        
+        <label for="Description">Description</label>
+        <textarea
+          class="form-control"
+          rows="8"
+          id="details"
+          placeholder="Please provide the incident short description"
+          name="description"
+          <% if (incidents.status == "CLOSED" || userType == "programmer") { %>
+            readonly
+          <% } %>
+          ><%= incidents.description %></textarea>
+
+          <label for="Description">Incident Narrative</label>
+          <textarea
+          class="form-control"
+          rows="8"
+          id="describe"
+          placeholder="Describe the complete incident in chronological order"
+          name="narrative"
+          readonly
+        ><%= incidents.narrative %></textarea>
+        <div class="priority" >
+          <p class="priority-title">Incident Priority:</p>
+          <div class="checks">
+            <div class="form-check">
+              <% if (incidents.priority == "low") { %>
+                <input class="form-check-input" type="radio" name="priority"
+                id="flexRadioDefault1" value="low" checked <% if (userType == "programmer" ) { %> disabled <% } %>>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Low
+                </label>
+              <% } else { %>
+                <input class="form-check-input" type="radio" name="priority"
+                id="flexRadioDefault1" value="low"  <% if (userType == "programmer" ) { %> disabled <% } %>>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Low
+                </label>
+              <% } %>
+              
+            </div>
+            <div class="form-check">
+              <% if (incidents.priority == "medium") { %>
+                <input class="form-check-input" type="radio" name="priority"
+                id="flexRadioDefault1" value="low" checked <% if (userType == "programmer" ) { %> disabled <% } %>>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Medium
+                </label>
+              <% } else { %>
+                <input class="form-check-input" type="radio" name="priority"
+                id="flexRadioDefault1" value="medium" <% if (userType == "programmer" ) { %> disabled <% } %>>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Medium
+                </label>
+              <% } %>
+            </div>
+            <div class="form-check">
+              <% if (incidents.priority == "high") { %>
+                <input class="form-check-input" type="radio" name="priority"
+                id="flexRadioDefault1" value="low" checked <% if (userType == "programmer" ) { %> disabled <% } %> >
+                <label class="form-check-label" for="flexRadioDefault1">
+                  High
+                </label>
+              <% } else { %>
+                <input class="form-check-input" type="radio" name="priority"
+                id="flexRadioDefault1" value="high" <% if (userType == "programmer" ) { %> disabled <% } %> >
+                <label class="form-check-label" for="flexRadioDefault1">
+                  High
+                </label>
+              <% } %>
+            </div>
+
+
+          </div>
+          
+
+        </div>
+        <% if (incidents._id) { %>
+        
+          <div>
+            <br>
+          <label for="status">Change Ticket Status</label>
+          <% if (incidents.status == "CLOSED") { %>
+            <input list="statusList" id="status" name="status" placeholder="CLOSED">
+
+          <% } else { %>
+            
+            <select name="status" id="status" class="" required>
+
+              <% if (userType != "programmer") { %>
+                <option value="NEW">NEW</option>
+              <% } %>
+              <% if (userType != "programmer") { %>
+                <option value="OPEN">OPEN</option>
+              <% } %>
+              <option value="IN PROGRESS">IN PROGRESS</option>
+              <% if (userType != "programmer") { %>
+                <option value="CLOSED">CLOSED</option>
+              <% } %>
+              <% if (userType == "programmer") { %>
+                <option value="NEED REVIEW">NEED REVIEW</option>
+              <% } %>
+            </select>
+
+
+          <% } %>
+        </div>
+        <% } %>
+
+        <label for="resolutionInformation">Resolution Information</label>
+        <textarea
+          class="form-control"
+          rows="8"
+          id="resolutionInformation"
+          placeholder="Please provide the Resolution Information when closing the ticket"
+          name="resolutionInformation"
+          value="<%= incidents.resolutionInformation %>"
+          ><%= incidents.resolutionInformation%></textarea>
+
+       
+        <input
+          placeholder="Ticket Date"
+          class="form-control"
+          type="date"
+          value="<%= incidents.recordNumber %>"
+          name="recordNumber"
+          id = "recordNumber"
+          <% if (incidents.status) { %>
+            readonly
+          <% } %>
+        />
+      </div>
+
+      <div class="col-xs-12 buttons">
+        <div class="row g-2">
+          <div class="col-xs-4 cancel">
+            <button
+              type="button"
+              class="btn2"
+              onclick="location.href = '/tickets/nc';"
+            >
+              Cancel
+            </button>
+          </div>
+          <% if (incidents.status != "CLOSED") { %>
+          <div class="col-xs-8 submit">
+            <button type="submit" class="btn">Submit</button>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container">
+    <h1>Incident Ticket List</h1>
+
+    <% if (userType != 'programmer') { %>
+        <a href="/add" class="btn" role="button" style ="width:fit-content">
+          Add an incident
+        </a>
+    <% } %>
+    
+    <% if (view == "all") { %>
+        <a href="/tickets/nc" class="btn" role="button" style="width: fit-content">Show only Open Incidents</a>
+
+    <% } else { %>
+        <a href="/tickets/all" class="btn" role="button" style="width: fit-content">Show all incidents</a>
+
+    <% } %>
+
+    <div class="row">
+        <div class="col">
+    
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope = "col">Record Number</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Responsibility</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Narrative</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="ticketsList">
+                    <!-- Repeatable Rows -->
+                    <% for(let count = 0; count < incidents.length; count++) { %>
+                        <% if (view != "all" && incidents[count].status == "CLOSED") { continue; } %>
+
+                        <tr>
+                            <th scope="row" class="text-center"><%= count + 1 %></th>
+                            <td><%= incidents[count].recordNumber + "-0000" + count%></td>
+                            <% if (incidents[count].status == 'OPEN') { %>
+                                <td class="TicketOpen"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'IN PROGRESS') { %>
+                                <td class="TicketWaiting"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'CLOSED') { %>
+                                <td class="TicketResolved"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'NEED REVIEW') { %>
+                                <td class="TicketUnderReview"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'NEW') { %>
+                                <td class ="TicketNew"><%= incidents[count].status %></td>
+                            <% } %>
+                            <td><%= incidents[count].customerInformation %></td>
+                            <td><%= incidents[count].priority %></td>
+                            <td><%= incidents[count].description %></td>
+                            <td class="narrative"><%= incidents[count].narrative %></td>
+                            <td class="text-center col-1">
+                                <a href="/edit/<%= incidents[count]._id %>"
+                                    class="btn"> Edit</a>
+                            </td>
+
+                            <% if (userType != "programmer") { %>
+                                <td class="text-center col-1">
+                                    <a href="/delete/<%= incidents[count]._id %>"
+                                        class="btn">Delete</a>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

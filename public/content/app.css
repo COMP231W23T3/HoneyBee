@@ -1,0 +1,311 @@
+/* Primary Button */
+.btn {
+  background-color: #7858fc;
+  border-radius: 4px;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+.btn:hover {
+  background-color: #454545;
+  color: #ffffff;
+}
+
+/* Secondary Button */
+.btn2 {
+  border-color: #454545;
+  border-radius: 4px;
+  color: #454545;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+.btn2:hover {
+  background-color: #454545;
+  color: #ffffff;
+}
+
+/* Centered Paragraph */
+.centerp {
+  margin: 0;
+  padding-top: 20%;
+  margin-left: 10%;
+  font-size: 16px;
+}
+
+/*Footer/header/navbar Overrides */
+
+.navbar {
+  background-color: #454545;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+body {
+  background-color: #dddddd;
+  width: 100%;
+  min-height: 100%;
+  margin-bottom: 150px;
+}
+
+.footer {
+  display: flex;
+  background-color: #454545;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  height: auto;
+  padding: 28px 0px;
+  gap: 28px;
+  z-index: 9999;
+}
+
+.footerp {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  padding-left: 16px;
+  color: #cccccc;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Main navigation links */
+.links {
+  padding: 12px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.links:hover {
+  background-color: #7858fc;
+}
+
+/*animated search bar */
+.searchbar[type='text'] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+
+/* Tickets List table Ticket Status column styles */
+
+.TicketNew {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #7858fc;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.TicketWaiting {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #d9044a;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.TicketUnderReview {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #855105;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.TicketOpen {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #f2d255;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #454545;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.TicketResolved {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #7afc58;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #454545;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Vertical Nav Bar Style for logged in restricted pages */
+.verticalnav {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px 8px 16px;
+  gap: 28px;
+  width: 64px;
+  height: auto;
+  background-color: #454545;
+}
+
+/* Vertical Nav Bar Icon Hover Color */
+.verticalnav:hover {
+  background-color: #f2d255;
+}
+
+/* | Add Ticket Header */
+
+.AddTicketContent .desc {
+  max-width: 50%;
+  min-width: 250px;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.AddTicketContent {
+  margin: 20px;
+}
+.AddTicketContent .form-title {
+  font-weight: bold;
+  margin: 15px 0;
+  max-width: 80%;
+  min-width: 300px;
+}
+.AddTicketContent .heading {
+  margin: 10px 0;
+  max-width: 90%;
+}
+.AddTicketContent .inputs input:not(.form-check-input),
+.AddTicketContent .inputs textarea {
+  max-width: 50%;
+  min-width: 250px;
+  margin-bottom: 10px;
+}
+.AddTicketContent .buttons .row {
+  max-width: 50%;
+  min-width: 250px;
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+
+.AddTicketContent .buttons a {
+  text-decoration: none;
+  color: black;
+}
+.AddTicketContent .buttons:hover a {
+  color: white;
+}
+.AddTicketContent .buttons button {
+  padding: 8px;
+  width: 100%;
+}
+.AddTicketContent .buttons .cancel button {
+  width: calc(100% - 10px);
+}
+.AddTicketContent .buttons .submit {
+  float: right;
+}
+
+.AddTicketContent .buttons .row > div {
+  padding: 0;
+}
+
+.ContactUsContent {
+  padding: 3rem 1rem;
+  max-width: 45%;
+  text-align: center;
+  margin: auto;
+  min-width: 250px;
+}
+
+.ContactUsContent h2 {
+  margin-bottom: 20px;
+}
+
+.ContactUsContent input,
+.ContactUsContent textarea {
+  margin-bottom: 10px;
+}
+
+.priority {
+  display: flex;
+  max-width: 50%;
+  min-width: 250px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.priority-title {
+  margin: 0;
+}
+.priority .checks {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+.priority .checks > * {
+  margin-left: 10px;
+}
+.priority .form-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.priority .form-check label {
+  margin: 0 0 0 5px;
+}
+.narrative {
+  max-width: 200px; /* Adjust this value as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
