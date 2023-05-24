@@ -1,4 +1,13 @@
 <div class="container">
+    <% if (userType == 'incidentsManager') { %>
+    <div class="search-container">
+        <form action="/search" method="GET">
+            <input type="text" name="term" placeholder="Search incidents" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <% } %>
+
     <h1>Incident Ticket List</h1>
 
     <% if (userType != 'programmer') { %>
@@ -64,6 +73,12 @@
                                 <td class="text-center col-1">
                                     <a href="/delete/<%= incidents[count]._id %>"
                                         class="btn">Delete</a>
+                                </td>
+                            <% } %>
+                            <% if (userType == "incidentsManager") { %>
+                                <td class="text-center col-1">
+                                    <a href="/incidents/report/<%= incidents[count]._id %>"
+                                        class="btn">Report</a>
                                 </td>
                             <% } %>
                         </tr>

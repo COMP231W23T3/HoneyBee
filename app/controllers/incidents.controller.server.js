@@ -8,6 +8,7 @@ Purpose:
 
 
 */
+import PDFDocument from 'pdfkit';
 import User from "../models/users.js"
 import incidentsModel from "../models/incidents.js";
 import { administrator, userName } from "../utils/utils.js";
@@ -159,4 +160,58 @@ export function ProcessIncidentsDeletePage(req, res, next) {
 
     res.redirect("/tickets");
   });
+}
+
+export async function SearchIncidents(req, res) {
+  const { term } = req.query;
+
+  // use regex for a flexible search
+  const searchTerm = new RegExp(term, 'i');
+
+  // Find incidents that match the search term in the recordNumber or description fields
+  const incidents = await incidentsModel.find({
+    $or: [{ recordNumber: searchTerm }, { description: searchTerm },{customerInformation:searchTerm}],
+  });
+
+  res.render("index", {
+    title: "Search Results",
+    page: "searchresults", 
+    incidents: incidents,
+    displayName: userName(req),
+    userType: administrator(req),
+  });
+}
+
+
+export async function GenerateIncidentReport(req, res, next) {
+    let id = req.params.id;
+
+    // Find the incident
+    const incident = await incidentsModel.findById(id);
+    if (!incident) {
+        return res.status(404).send('Incident not found');
+    }
+
+    // Create a PDF document
+    const doc = new PDFDocument;
+
+    // Write some content to the document
+    doc.fontSize(18).text('Incident Report', { align: 'center' }).fontSize(14).moveDown();
+    doc.text(`Record Number: ${incident.recordNumber}`);
+    doc.text(`Responsibility: ${incident.customerInformation}`);
+    doc.text(`Description: ${incident.description}`);
+    doc.text(`Priority: ${incident.priority}`);
+    doc.text(`Status: ${incident.status}`);
+    doc.text(`Resolution Information: ${incident.resolutionInformation}`);
+    // Add more details as required
+
+    // Set up the response to return a PDF
+    res.setHeader('Content-disposition', 'attachment; filename=report.pdf');
+    res.setHeader('Content-type', 'application/pdf');
+
+    // Pipe the document to the response
+    doc.pipe(res);
+
+    // Finalize the document
+    doc.end();
 }

@@ -14,10 +14,10 @@ import { RoleGuard } from "../utils/utils.js"; // Change this line
 
 const router = Router();
 
-router.get("/contact", contactPage);
-router.get("/dashboard", dashboardPage);
+router.get("/contact", RoleGuard(["programmer", "CEO", "incidentsManager","leadDeveloper"]), contactPage);
+router.get("/dashboard", RoleGuard(["programmer", "CEO", "incidentsManager","leadDeveloper"]), dashboardPage);
 router.get("/tickets/:view", ticketsPage);
 
-router.get("/tickets", ticketsPage);
+router.get("/tickets", RoleGuard(["programmer", "CEO", "incidentsManager","leadDeveloper"]), ticketsPage);
 
 export default router;
