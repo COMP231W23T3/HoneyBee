@@ -12,21 +12,30 @@
           value="<%= incidents._id %>"
           readonly/>
 
-        <label for="Customer Information">Responsibility</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="First and last name"
-          aria-label="fullname"
-          aria-describedby="basic-addon1"
-          value="<%= incidents.customerInformation %>"
-          name="customerInformation"
-          <% if (incidents.status == "CLOSED" || userType == "programmer" ) { %>
-            readonly
+          <label for="Customer Information">Responsibility</label>
+          <div>
+          <% if (userType == "leadDeveloper") { %>
+              <select name="customerInformation" >
+                  <% users.forEach(function(programmer) { %>
+                      <option value="<%= programmer.displayName %>"><%= programmer.displayName %></option>
+                  <% }); %>
+              </select>
+          <% } else { %>
+              <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First and last name"
+                  aria-label="fullname"
+                  aria-describedby="basic-addon1"
+                  value="<%= incidents.customerInformation %>"
+                  name="customerInformation"
+                  readonly
+              />
           <% } %>
-        />
-        
-        <label for="Description">Description</label>
+        </div>
+          
+          <label for="Description">Description</label>
+          
         <textarea
           class="form-control"
           rows="8"

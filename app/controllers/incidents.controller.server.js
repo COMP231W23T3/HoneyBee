@@ -8,17 +8,26 @@ Purpose:
 
 
 */
-
+import User from "../models/users.js"
 import incidentsModel from "../models/incidents.js";
 import { administrator, userName } from "../utils/utils.js";
 
-export function AddTicketsPage(req, res, next) {
+export async function AddTicketsPage(req, res, next) {
+  const users = await User.find({
+    where: {
+      role:"programmer"
+    }
+  });
+
+  const programmers = users.filter(user=>user.role=='programmer')
+  console.log(users)
   res.render("index", {
     title: "Add Ticket",
     page: "addticket",
     incidents: {},
     displayName: userName(req),
-    userType: administrator(req) 
+    userType: administrator(req),
+    users: programmers
   });
 }
 
@@ -57,8 +66,15 @@ New Status: ${req.body.status}
   });
 }
 
-export function DisplayIncidentsEditPage(req, res, next) {
+export async function DisplayIncidentsEditPage(req, res, next) {
   let id = req.params.id;
+  const users = await User.find({
+    where: {
+      role:"programmer"
+    }
+  });
+
+  const programmers = users.filter(user=>user.role=='programmer')
   console.log(id);
 
   incidentsModel.findById(id, (err, Incident) => {
@@ -74,7 +90,8 @@ export function DisplayIncidentsEditPage(req, res, next) {
       page: "addticket",
       incidents: Incident,
       displayName: userName(req),
-      userType: administrator(req) 
+      userType: administrator(req),
+      users: programmers
 
     });
   });

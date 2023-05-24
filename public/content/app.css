@@ -309,3 +309,26 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Styling the dropdown select element itself */
+.select {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background: #ffffff;
+  appearance: none;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Chrome/Safari/Opera */
+  cursor: pointer;
+}
+
+/* Styling the dropdown options */
+select option {
+  padding: 10px;
+  background: #f4f4f4;
+}
+
+/* Styling the hover effect for dropdown options */
+select option:hover {
+  background: #e4e4e4;
+}
