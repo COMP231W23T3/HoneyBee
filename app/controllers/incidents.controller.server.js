@@ -215,3 +215,10 @@ export async function GenerateIncidentReport(req, res, next) {
     // Finalize the document
     doc.end();
 }
+
+export async function GetIncidentStatusCounts(req, res, next) {
+  const closedCount = await incidentsModel.countDocuments({ status: "CLOSED" });
+  const notClosedCount = await incidentsModel.countDocuments({ status: { $ne: "CLOSED" } });
+
+  res.json({ closedCount, notClosedCount });
+}

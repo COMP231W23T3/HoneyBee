@@ -14,7 +14,7 @@
 
           <label for="Customer Information">Responsibility</label>
           <div>
-          <% if (userType == "leadDeveloper") { %>
+          <% if (userType == "leadDeveloper" ||userType == "incidentsManager"||userType == "ceo") { %>
               <select name="customerInformation" >
                   <% users.forEach(function(programmer) { %>
                       <option value="<%= programmer.displayName %>"><%= programmer.displayName %></option>

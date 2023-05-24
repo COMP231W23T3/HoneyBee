@@ -1,5 +1,5 @@
 <div class="container">
-    <% if (userType == 'incidentsManager') { %>
+    <% if (userType == 'incidentsManager' ||userType == 'ceo') { %>
     <div class="search-container">
         <form action="/search" method="GET">
             <input type="text" name="term" placeholder="Search incidents" required>
@@ -7,6 +7,47 @@
         </form>
     </div>
     <% } %>
+
+
+    <% if (userType == 'ceo') { %>
+        <div style="width: 400px; height: 400px;margin: auto;">
+            <canvas id="incidentStatusChart"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+
+        <script>
+        fetch('/incidents/status_counts')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('incidentStatusChart');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Closed', 'Open'],
+                        datasets: [{
+                            data: [data.closedCount, data.notClosedCount],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)', // color for Not Closed
+                                'rgba(75, 192, 192, 0.2)', // color for Closed
+
+                            ],
+                            borderColor: [                                
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(75, 192, 192, 1)',
+
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                    }
+                });
+            });
+        </script>
+    <% } %>
+    
+    
 
     <h1>Incident Ticket List</h1>
 
@@ -75,7 +116,7 @@
                                         class="btn">Delete</a>
                                 </td>
                             <% } %>
-                            <% if (userType == "incidentsManager") { %>
+                            <% if (userType == "incidentsManager" || userType == "ceo") { %>
                                 <td class="text-center col-1">
                                     <a href="/incidents/report/<%= incidents[count]._id %>"
                                         class="btn">Report</a>

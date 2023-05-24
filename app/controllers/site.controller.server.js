@@ -9,6 +9,8 @@ Purpose:
 import incidentsModel from "../models/incidents.js";
 import { userName, administrator } from "../utils/utils.js";
 
+
+
 export function contactPage(req, res, next) {
   let userType = req.user ? req.user.userType : "programmer";
   res.render("index", {
@@ -32,6 +34,7 @@ export function dashboardPage(req, res, next) {
 }
 export function ticketsPage(req, res, next) {
   let viewMode = req.params.view;
+
 
   incidentsModel.find(function(err, incidentsCollection) {
     if(err){
