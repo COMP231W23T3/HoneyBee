@@ -21,11 +21,11 @@ import { RoleGuard } from "../utils/utils.js"; // Change this line
 
 const router = Router();
 
-router.get('/add', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper"]), AddTicketsPage);
-router.post('/add', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper"]), ProcessTicketsAddPage);
-router.get('/edit/:id', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper"]), DisplayIncidentsEditPage);
-router.post('/edit/:id', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper"]), ProcessIncidentsEditPage);
-router.get('/delete/:id', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper"]), ProcessIncidentsDeletePage);
+router.get('/add', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]), AddTicketsPage);
+router.post('/add', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]), ProcessTicketsAddPage);
+router.get('/edit/:id', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]), DisplayIncidentsEditPage);
+router.post('/edit/:id', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]), ProcessIncidentsEditPage);
+router.get('/delete/:id', RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]), ProcessIncidentsDeletePage);
 
 router.get('/search', SearchIncidents);
 router.get('/incidents/report/:id', GenerateIncidentReport);

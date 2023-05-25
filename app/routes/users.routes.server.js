@@ -26,8 +26,8 @@ const router = Router();
 
 router.get("/", loginPage);
 router.post("/", ProcessLogin);
-router.get("/accountmanagement/:id", accountManagementPage);
-router.post("/accountmanagement/:id",  ProcessAccountManagement);
+router.get("/accountmanagement/:id",RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]), accountManagementPage);
+router.post("/accountmanagement/:id",RoleGuard(["programmer", "ceo", "incidentsManager","leadDeveloper","supportAgent"]),  ProcessAccountManagement);
 router.get("/login", loginPage);
 router.post("/login", ProcessLogin);
 router.get("/register", registerPage);

@@ -15,7 +15,7 @@
           <label for="Customer Information">Responsibility</label>
           <div>
           <% if (userType == "leadDeveloper" ||userType == "incidentsManager"||userType == "ceo") { %>
-              <select name="customerInformation" >
+              <select name="responsibility" class="select">
                   <% users.forEach(function(programmer) { %>
                       <option value="<%= programmer.displayName %>"><%= programmer.displayName %></option>
                   <% }); %>
@@ -27,8 +27,8 @@
                   placeholder="First and last name"
                   aria-label="fullname"
                   aria-describedby="basic-addon1"
-                  value="<%= incidents.customerInformation %>"
-                  name="customerInformation"
+                  value="<%= incidents.responsibility %>"
+                  name="responsibility"
                   readonly
               />
           <% } %>

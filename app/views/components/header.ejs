@@ -19,7 +19,9 @@
           <li><a href="/add"><p class="links">Add Ticket</p></a></li>
         <% } %>
         <li><a href="/logout"><p class="links">Logout</p></a></li>
-        <li><a href="/accountmanagement/<%= displayName %>"><p class="links">Account Management</p></a></li>
+        <% if (userType == "supportAgent") { %>
+          <li><a href="/accountmanagement/<%= displayName %>"><p class="links">Account Management</p></a></li>
+        <% } %>
         <% } %>
         <li><a href="/contact"><p class="links">Contact</p></a></li>
       </ul>

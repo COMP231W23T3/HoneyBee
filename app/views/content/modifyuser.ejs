@@ -1,47 +1,98 @@
+<div class="row AddTicketContent">
+  <label class="row AddTicketContent" for="users">Select User:</label>
+  <select name="users" id="user-select" class="select">
+      <% accounts.forEach((user) => { %>
+          <option value="<%= user._id %>"><%= user.displayName %></option>
+      <% }) %>
+  </select>
 <div class="container">
-    <div class="row AddTicketContent">
-      <div class="col-xs-12">
-        <h2 class="h2 form-title">Account Management</h2>
+  <div class="row AddTicketContent">
+    <div class="col-xs-12">
+      <h2 class="h2 form-title">Account Management</h2>
+    </div>
+    <form class="form" method="POST">
+      <div class="col-xs-12 inputs">
+          <label for="displayName">Display Name:</label>
+      <input 
+          type="text"
+          name="displayName"
+          value="<%= account.displayName %>"/> <br>
+
+      <label for="userName">User Name: </label>
+      <input 
+          type="text"
+          name="userName"
+          value="<%= account.username %>"/> <br>
+
+      <label for="Email">Email Address: </label>
+      <input 
+          type="text"
+          
+          name="Email"
+          value="<%= account.emailAddress %>"/> <br>            
       </div>
-      <form class="form" method="POST">
-        <div class="col-xs-12 inputs">
-            <label for="displayName">Display Name:</label>
-        <input 
-            type="text"
-            name="displayName"
-            value="<%= account.displayName %>"/> <br>
 
-        <label for="userName">User Name: </label>
-        <input 
-            type="text"
-            name="userName"
-            value="<%= account.username %>"/> <br>
-
-        <label for="Email">Email Address: </label>
-        <input 
-            type="text"
-            
-            name="Email"
-            value="<%= account.emailAddress %>"/> <br>            
-        </div>
-  
-        <div class="col-xs-12 buttons">
-          <div class="row g-2">
-            <div class="col-xs-4 cancel">
-              <button
-                type="button"
-                class="btn2"
-                onclick="location.href = '/tickets';"
-              >
-                Back to Tickets
-              </button>
-            </div>
-            <div class="col-xs-8 submit">
-              <button type="submit" class="btn">Submit</button>
-            </div>
+      <div class="col-xs-12 buttons">
+        <div class="row g-2">
+          <div class="col-xs-4 cancel">
+            <button
+              type="button"
+              class="btn2"
+              onclick="location.href = '/tickets';"
+            >
+              Back to Tickets
+            </button>
+          </div>
+          <div class="col-xs-8 submit">
+            <button type="submit" class="btn">Submit</button>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
+</div>
+</div>
+
+<script>
+  // Parse accounts to JavaScript object
+  var accounts = JSON.parse('<%- JSON.stringify(accounts) %>');
+
+  // Access the select dropdown
+  var userSelect = document.getElementById("user-select");
   
+  // Function to update form fields
+  function updateFields(user) {
+      document.getElementsByName('displayName')[0].value = user.displayName;
+      document.getElementsByName('userName')[0].value = user.username;
+      document.getElementsByName('Email')[0].value = user.emailAddress;
+      // Add more fields as needed...
+  }
+  
+  // Event listener for select dropdown change
+  userSelect.addEventListener('change', function() {
+      // Log for debugging
+      console.log('Select dropdown value changed to: ', this.value);
+
+      // Find the selected user from the accounts
+      var selectedUser = accounts.find(function(user) {
+          return user._id === this.value;
+      }, this);
+
+      // If a user is found, update the fields, otherwise log an error
+      if (selectedUser) {
+        console.log('User found: ', selectedUser);
+        updateFields(selectedUser);
+      } else {
+        console.error('No user found with the selected ID!');
+      }
+  });
+
+  // Check if accounts exist and is not empty, then populate fields with first user's data
+  if (accounts && accounts.length > 0) {
+    console.log('Initial user: ', accounts[0]);
+    updateFields(accounts[0]);
+  } else {
+    console.error('No accounts available!');
+  }
+</script>
+

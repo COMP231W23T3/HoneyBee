@@ -44,28 +44,24 @@ export function registerPage(req, res, next) {
 export function accountManagementPage(req, res, next) {
   let userType = req.user ? req.user.userType : "programmer";
 
-  let id = req.params.id;
-
-  console.log(id);
-
-  User.findById(id, (err, user) => {
+  User.find({}, (err, users) => {
     if (err) {
       console.error(err);
       res.end(err);
     }
+    let account = users[0];  // Select the first user in the list as default
     res.render("index", {
       title: "Account Management",
       page: "modifyuser",
       messages: req.flash("error"),
       displayName: userName(req),
-      account: user,
+      account: account,   // Add this line
+      accounts: users,
       userType: userType
     })
-
-  })
-
-
+  });
 }
+
 // Process
 
 export function ProcessLogin(req, res, next) {

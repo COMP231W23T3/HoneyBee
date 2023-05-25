@@ -46,7 +46,7 @@ let narrativeUpdate =
 INCIDENT CREATED ON: ${today}
 New Description: ${req.body.description}
 New Priority: ${req.body.priority}
-New Customer Information: ${req.body.customerInformation}
+New Customer Information: ${req.body.responsibility}
 New Status: ${req.body.status}
 `
 
@@ -55,7 +55,7 @@ New Status: ${req.body.status}
     description: req.body.description,
     priority: req.body.priority,
     narrative: narrativeUpdate,
-    customerInformation: req.body.customerInformation,
+    responsibility: req.body.responsibility,
     status: "NEW"
   });
   incidentsModel.create(newIncident, (err, Incident) => {
@@ -111,7 +111,7 @@ export function ProcessIncidentsEditPage(req, res, next) {
   ID: ${id}
   New Description: ${req.body.description}
   New Priority: ${req.body.priority}
-  New Customer Information: ${req.body.customerInformation}
+  New Customer Information: ${req.body.responsibility}
   New Status: ${req.body.status}
   New Resolution: ${req.body.resolutionInformation}
 
@@ -125,7 +125,7 @@ export function ProcessIncidentsEditPage(req, res, next) {
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative + narrativeUpdate,
-    customerInformation: req.body.customerInformation,
+    responsibility: req.body.responsibility,
     status: req.body.status,
     resolutionInformation: req.body.resolutionInformation // set resolutionInformation here
   });
@@ -170,7 +170,7 @@ export async function SearchIncidents(req, res) {
 
   // Find incidents that match the search term in the recordNumber or description fields
   const incidents = await incidentsModel.find({
-    $or: [{ recordNumber: searchTerm }, { description: searchTerm },{customerInformation:searchTerm}],
+    $or: [{ recordNumber: searchTerm }, { description: searchTerm },{responsibility:searchTerm}],
   });
 
   res.render("index", {
@@ -198,7 +198,7 @@ export async function GenerateIncidentReport(req, res, next) {
     // Write some content to the document
     doc.fontSize(18).text('Incident Report', { align: 'center' }).fontSize(14).moveDown();
     doc.text(`Record Number: ${incident.recordNumber}`);
-    doc.text(`Responsibility: ${incident.customerInformation}`);
+    doc.text(`Responsibility: ${incident.responsibility}`);
     doc.text(`Description: ${incident.description}`);
     doc.text(`Priority: ${incident.priority}`);
     doc.text(`Status: ${incident.status}`);
